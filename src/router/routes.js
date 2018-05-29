@@ -1,11 +1,12 @@
 import auth from '../domain/auth/services/auth'
+import { default as app } from '../app'
 
 const root = [
   {
     path: '/',
-    component: () => import('layouts/default'),
+    component: () => import('src/app/layouts/default'),
     children: [
-      { path: '', component: () => import('pages/index') }
+      { path: '', component: () => import('src/app/pages/index') }
     ]
   },
   {
@@ -20,8 +21,8 @@ const root = [
 
   { // Always leave this as last one
     path: '*',
-    component: () => import('pages/404')
+    component: () => import('src/app/pages/404')
   }
 ]
 
-export default [ ...root ]
+export default [ ...root, ...app ]
