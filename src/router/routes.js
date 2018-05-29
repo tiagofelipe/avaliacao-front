@@ -1,5 +1,5 @@
 import auth from '../domain/auth/services/auth'
-import { default as app } from '../app'
+import { routes as app } from '../app'
 
 const root = [
   {
