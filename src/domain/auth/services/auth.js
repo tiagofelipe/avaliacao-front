@@ -39,7 +39,7 @@ export default {
 }
 
 const postLogin = (login, senha) => {
-  return http.post(config.baseUrl + '/auth', 'login=' + login + '&senha=' + senha)
+  return http.post(config.baseUrl + '/api/auth', 'user=' + login + '&pass=' + senha)
     .then(response => Promise.resolve(response.data))
     .catch(({response}) => {
       return Promise.reject(response.data)

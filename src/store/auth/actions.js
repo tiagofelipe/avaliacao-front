@@ -1,7 +1,7 @@
 import auth from '../../domain/auth/services/auth'
 
 export const attemptLogin = (context, payload) => {
-  return auth.login(payload.login, payload.senha)
+  return auth.login(payload.username, payload.password)
     .then(data => {
       context.commit('SET_TOKEN', data.token)
       context.commit('SET_USER', data.user)

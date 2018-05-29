@@ -3,7 +3,6 @@
     <q-layout-header>
       <q-toolbar
         color="primary"
-        :glossy="$q.theme === 'mat'"
         :inverted="$q.theme === 'ios'"
       >
         <q-btn
@@ -17,8 +16,8 @@
         </q-btn>
 
         <q-toolbar-title>
-          Quasar App
-          <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
+          Software Avaliação
+          <div slot="subtitle">Bem-vindo {{ $store.getters.currentUser.nome }}</div>
         </q-toolbar-title>
       </q-toolbar>
     </q-layout-header>

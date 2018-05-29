@@ -13,7 +13,8 @@ module.exports = function (ctx) {
     extras: [
       ctx.theme.mat ? 'roboto-font' : null,
       'material-icons',
-      ctx.theme.ios ? 'ionicons' : null,
+      // ctx.theme.ios ? 'ionicons' : null,
+      'ionicons'
       // 'mdi',
       // 'fontawesome'
     ],
@@ -55,7 +56,9 @@ module.exports = function (ctx) {
         'QListHeader',
         'QItem',
         'QItemMain',
-        'QItemSide'
+        'QItemSide',
+        'QInput',
+        'QField'
       ],
       directives: [
         'Ripple'

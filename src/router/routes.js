@@ -6,7 +6,7 @@ const root = [
     path: '/',
     component: () => import('src/app/layouts/default'),
     children: [
-      { path: '', component: () => import('src/app/pages/index') }
+      { path: '', name: 'index', component: () => import('src/app/pages/index') }
     ]
   },
   {
