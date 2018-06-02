@@ -6,10 +6,10 @@ export default {
   data () {
     return {
       estabelecimento: {
-        cnpj: 'a',
-        nomeFantasia: 'b',
-        razaoSocial: 'c',
-        tipo: 'd'
+        cnpj: '',
+        nomeFantasia: '',
+        razaoSocial: '',
+        tipo: ''
       }
     }
   },
