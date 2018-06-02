@@ -23,17 +23,8 @@ export default {
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-layout-header>
-      <q-toolbar
-        color="primary"
-        :inverted="$q.theme === 'ios'"
-      >
-        <q-btn
-          flat
-          dense
-          round
-          @click="leftDrawerOpen = !leftDrawerOpen"
-          aria-label="Menu"
-        >
+      <q-toolbar color="primary" :inverted="$q.theme === 'ios'">
+        <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu">
           <q-icon name="menu" ></q-icon>
         </q-btn>
 
@@ -57,6 +48,12 @@ export default {
         <q-list-header>Menu</q-list-header>
         <q-collapsible icon="send" label="Estabelecimento">
           <q-item link :to="{ name: 'estabelecimento.cadastro' }">
+            <q-item-side icon="add" ></q-item-side>
+            <q-item-main label="Cadastrar" ></q-item-main>
+          </q-item>
+        </q-collapsible>
+        <q-collapsible icon="send" label="Funcionário">
+          <q-item link :to="{ name: 'funcionario.cadastro' }">
             <q-item-side icon="add" ></q-item-side>
             <q-item-main label="Cadastrar" ></q-item-main>
           </q-item>
