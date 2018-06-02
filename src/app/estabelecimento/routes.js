@@ -5,7 +5,7 @@ export default [
     // redirect: { name: 'estabelecimento.lista' },
     children: [
       {
-        path: '/cadastro',
+        path: 'cadastro',
         name: 'estabelecimento.cadastro',
         component: () => import('src/app/estabelecimento/CadastroEstabelecimento')
       }
