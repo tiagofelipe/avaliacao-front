@@ -26,7 +26,7 @@ export default {
   <q-layout view="lHh Lpr lFf">
     <q-layout-header>
       <q-toolbar color="primary" :inverted="$q.theme === 'ios'">
-        <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu">
+        <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu" v-if="isLogged">
           <q-icon name="menu" ></q-icon>
         </q-btn>
 
@@ -38,7 +38,7 @@ export default {
       </q-toolbar>
     </q-layout-header>
 
-    <q-layout-drawer v-model="leftDrawerOpen" :content-class="$q.theme === 'mat' ? 'bg-white' : null">
+    <q-layout-drawer v-model="leftDrawerOpen" :content-class="$q.theme === 'mat' ? 'bg-white' : null" v-if="isLogged">
       <q-list no-border link inset-delimiter>
         <q-list-header>Menu</q-list-header>
         <q-collapsible icon="send" label="Estabelecimento">
@@ -58,12 +58,6 @@ export default {
           <q-item-side icon="ion-log-out" ></q-item-side>
           <q-item-main>
             <q-item-tile label>Sair</q-item-tile>
-          </q-item-main>
-        </q-item>
-        <q-item link to="/auth" v-else>
-          <q-item-side icon="ion-log-in" ></q-item-side>
-          <q-item-main>
-            <q-item-tile label>Entrar</q-item-tile>
           </q-item-main>
         </q-item>
       </q-list>
