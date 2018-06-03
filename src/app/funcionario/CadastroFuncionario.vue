@@ -29,6 +29,7 @@ export default {
   methods: {
     cadastraFuncionario () {
       this.isRegistering = true
+      this.$q.loading.show()
       FuncionarioService.cadastrar({...this.funcionario})
         .then(result => {
           FuncionarioService.uploadFile(this.formData, result.data.id)
@@ -41,6 +42,7 @@ export default {
               this.url = tmp + '?' + d.getTime()
               // this.reset()
               this.$router.push({name: 'funcionario.lista', query: {sucesso: 1}})
+              this.$q.loading.hide()
             })
             .catch(error => {
               console.log('erro aqui', error)
