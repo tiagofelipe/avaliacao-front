@@ -24,9 +24,9 @@ export default {
 
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-layout-header>
+    <q-layout-header  v-if="isLogged">
       <q-toolbar color="primary" :inverted="$q.theme === 'ios'">
-        <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu" v-if="isLogged">
+        <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu">
           <q-icon name="menu" ></q-icon>
         </q-btn>
 
