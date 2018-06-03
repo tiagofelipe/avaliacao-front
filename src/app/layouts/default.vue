@@ -1,5 +1,6 @@
 <script>
 import { openURL } from 'quasar'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'LayoutDefault',
@@ -9,8 +10,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['isLogged', 'currentUser']),
     firstName () {
-      let n = this.$store.getters.currentUser.nome.split(' ')
+      let n = this.currentUser.nome.split(' ')
       return n[0]
     }
   },
@@ -52,7 +54,7 @@ export default {
           </q-item>
         </q-collapsible>
         <q-item-separator></q-item-separator>
-        <q-item link to="/logout" v-if="$store.getters.isLogged">
+        <q-item link to="/logout" v-if="isLogged">
           <q-item-side icon="ion-log-out" ></q-item-side>
           <q-item-main>
             <q-item-tile label>Sair</q-item-tile>
