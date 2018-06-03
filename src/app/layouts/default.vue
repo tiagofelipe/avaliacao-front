@@ -36,15 +36,8 @@ export default {
       </q-toolbar>
     </q-layout-header>
 
-    <q-layout-drawer
-      v-model="leftDrawerOpen"
-      :content-class="$q.theme === 'mat' ? 'bg-white' : null"
-    >
-      <q-list
-        no-border
-        link
-        inset-delimiter
-      >
+    <q-layout-drawer v-model="leftDrawerOpen" :content-class="$q.theme === 'mat' ? 'bg-white' : null">
+      <q-list no-border link inset-delimiter>
         <q-list-header>Menu</q-list-header>
         <q-collapsible icon="send" label="Estabelecimento">
           <q-item link :to="{ name: 'estabelecimento.cadastro' }">
