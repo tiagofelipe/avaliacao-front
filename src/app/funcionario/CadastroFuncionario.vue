@@ -12,10 +12,7 @@ export default {
         cargo: '',
         estabelecimento: ''
       },
-      estabelecimentos: [
-        { id: 34, nomeFantasia: 'Estabelecimento 1' },
-        { id: 33, nomeFantasia: 'Estabelecimento 2' }
-      ],
+      estabelecimentos: [],
       formData: null,
       isRegistering: false
     }
