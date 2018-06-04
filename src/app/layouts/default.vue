@@ -11,9 +11,9 @@ export default {
   },
   computed: {
     ...mapGetters(['isLogged', 'currentUser']),
-    firstName () {
-      let n = this.currentUser.nome.split(' ')
-      return n[0]
+    userName () {
+      let n = this.currentUser.nome.trim().split(' ')
+      return n.length > 1 ? n[0] + ' ' + n[n.length - 1] : n[0]
     }
   },
   methods: {
@@ -32,15 +32,19 @@ export default {
 
         <q-toolbar-title>
           Software Avaliação
-          <div slot="subtitle" v-if="$store.getters.isLogged">Você está logado como {{ firstName }}</div>
-          <div slot="subtitle" v-else>Bem-vindo!</div>
+          <div slot="subtitle">Bem-vindo!</div>
         </q-toolbar-title>
       </q-toolbar>
     </q-layout-header>
 
     <q-layout-drawer v-model="leftDrawerOpen" :content-class="$q.theme === 'mat' ? 'bg-white' : null" v-if="isLogged">
+      <div class="menu-header">
+        <div class="user-avatar">
+          <span class="letter">{{ currentUser.nome.trim().substr(0, 1).toUpperCase() }}</span>
+        </div>
+        <div class="user-name">{{ userName }}</div>
+      </div>
       <q-list no-border link inset-delimiter>
-        <q-list-header>Menu</q-list-header>
         <q-collapsible icon="send" label="Estabelecimento">
           <q-item link :to="{ name: 'estabelecimento.cadastro' }">
             <q-item-side icon="add" ></q-item-side>
@@ -69,5 +73,25 @@ export default {
   </q-layout>
 </template>
 
-<style>
+<style scoped lang="stylus">
+  @import '~variables';
+  .menu-header
+    background-color: $secondary;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+  .user-avatar
+    background-color: $primary;
+    font-size: 1.5rem;
+    margin: 10px 20px 10px 10px;
+    padding: 25px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  .letter
+    position: absolute;
 </style>
