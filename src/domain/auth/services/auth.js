@@ -23,6 +23,7 @@ export default {
   logout (callback) {
     delete localStorage.token
     delete localStorage.user
+    delete localStorage.estabelecimento
     this.onChange(false)
     // Clear store in vuex
     store.dispatch('logout').then(() => {

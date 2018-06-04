@@ -6,5 +6,8 @@ export default {
     return http.post(config.baseUrl + '/api/estabelecimento/new', JSON.stringify(e))
       .then(result => Promise.resolve(result))
       .catch(error => Promise.reject(error))
+  },
+  hasEstabelecimento () {
+    return !!localStorage.estabelecimento
   }
 }

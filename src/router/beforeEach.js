@@ -1,6 +1,7 @@
 import store from '../store'
 import { includes } from 'lodash'
 import auth from '../domain/auth/services/auth'
+import EstabelecimentoService from '../domain/estabelecimento/services/estabelecimento'
 
 const isAuthRoute = route => route.path.indexOf('/auth') !== -1
 const isLogged = () => store.getters.isLogged
@@ -21,7 +22,14 @@ export default (to, from, next) => {
         senha: 'hacker'
       })
         .then(() => {
-          next()
+          if (EstabelecimentoService.hasEstabelecimento()) { // O usuário já selecionou um estabelecimento (localStorage cache) mas as informações não estão no store
+            store.dispatch('setCurrentEstabelecimento', JSON.parse(localStorage.estabelecimento))
+              .then(() => {
+                next()
+              })
+          } else {
+            next()
+          }
         })
     } else if (!includes(publicRoutes, to.path)) {
       next({
