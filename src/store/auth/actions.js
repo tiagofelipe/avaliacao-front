@@ -15,6 +15,7 @@ export const attemptLogin = (context, payload) => {
 export const logout = (context, payload) => {
   context.commit('SET_TOKEN', '')
   context.commit('SET_USER', {})
+  context.commit('SET_ESTABELECIMENTO', {})
   return Promise.resolve()
 }
 
