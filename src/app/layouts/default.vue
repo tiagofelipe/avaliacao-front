@@ -45,6 +45,13 @@ export default {
         <div class="user-name">{{ userName }}</div>
       </div>
       <q-list no-border link inset-delimiter>
+        <q-item link to="/">
+          <q-item-side icon="ion-home" ></q-item-side>
+          <q-item-main>
+            <q-item-tile label>Dashboard</q-item-tile>
+          </q-item-main>
+        </q-item>
+        <q-item-separator></q-item-separator>
         <q-collapsible icon="send" label="Estabelecimento">
           <q-item link :to="{ name: 'estabelecimento.cadastro' }">
             <q-item-side icon="add" ></q-item-side>
