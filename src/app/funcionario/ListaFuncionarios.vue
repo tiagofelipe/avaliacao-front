@@ -16,8 +16,7 @@ export default {
           cargo: 'Consulting detective',
           nota: 4
         }
-      ],
-      stars: 5
+      ]
     }
   }
 }
