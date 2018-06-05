@@ -1,6 +1,5 @@
 <script>
 import FuncionarioService from '../../domain/funcionario/services/funcionario'
-import UsuarioService from '../../domain/usuario/services/usuario'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -18,10 +17,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['currentUser'])
+    ...mapGetters(['currentUser', 'currentEstabelecimento'])
   },
-  beforeMount () {
-    this.getEstabelecimentos()
+  created () {
+    this.funcionario.estabelecimento = this.currentEstabelecimento.id
   },
   methods: {
     cadastraFuncionario () {
@@ -66,15 +65,6 @@ export default {
       console.log('arquivo', arquivo)
       console.log('formdata', formData)
       // document.getElementById('fileInpt').value = ''
-    },
-    getEstabelecimentos () {
-      UsuarioService.getEstabelecimentosNames(this.currentUser.id)
-        .then(result => {
-          this.estabelecimentos = result.data.estabelecimentos
-        })
-        .catch(error => {
-          console.log(error.response.data)
-        })
     }
   }
 }
@@ -82,6 +72,7 @@ export default {
 
 <template>
   <q-page padding>
+    <h4>Cadastro de Funcionário</h4>
     <form @submit.prevent="cadastraFuncionario">
       <q-field icon="" class="q-my-md">
         <q-input type="text" float-label="Nome" v-model="funcionario.nome" ></q-input>
@@ -91,12 +82,6 @@ export default {
       </q-field>
       <q-field icon="" label="Foto" label-width="1" class="q-my-md">
         <input type="file" id="fileInpt" ref="uploadFile" accept="image/*" @change="setFile($event)">
-      </q-field>
-      <q-field icon="" label="Trabalha em: " label-width="2" class="q-my-md">
-        <select v-model="funcionario.estabelecimento">
-          <option value="" disabled hidden>Estabelecimento</option>
-          <option :value="e.id" v-for="e in estabelecimentos" :key="e.id">{{ e.nomeFantasia }}</option>
-        </select>
       </q-field>
       <q-btn color="primary" type="submit" class="full-width">Cadastrar</q-btn>
     </form>
