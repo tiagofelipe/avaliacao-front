@@ -2,20 +2,19 @@
 import { mapGetters } from 'vuex'
 import { isObjEmpty } from '../../utils/helpers/utils'
 import Estatisticas from './components/Estatisticas'
+import EstabelecimentoService from '../../domain/estabelecimento/services/estabelecimento'
 
 export default {
   name: 'PageIndex',
   components: { Estatisticas },
   data () {
     return {
-      estabelecimentos: [{ id: 4, nomeFantasia: 'Estabelecimento' },
-        { id: 13, nomeFantasia: 'Estabelecimento com Nome Fantasia Grande' },
-        { id: 23, nomeFantasia: 'Estabelecimento com 2' }
-      ]
+      estabelecimentos: [],
+      isLoading: false
     }
   },
   computed: {
-    ...mapGetters(['currentEstabelecimento']),
+    ...mapGetters(['currentEstabelecimento', 'currentUser']),
     isCurrentEstabelecimentoVazio () {
       return isObjEmpty(this.currentEstabelecimento)
     }
@@ -23,14 +22,19 @@ export default {
   created () {
     this.getEstabelecimentos()
   },
-  beforeMount () {
-    if (this.estabelecimentos.length === 1) {
-      this.selecionaEstabelecimento(this.estabelecimentos[0])
-    }
+  mounted () {
   },
   methods: {
     getEstabelecimentos () {
-      console.log('implementar')
+      this.isLoading = true
+      EstabelecimentoService.getEstabelecimentosByUser(this.currentUser.id)
+        .then(result => {
+          if (result.data.estabelecimentos.length === 1) {
+            this.selecionaEstabelecimento(result.data.estabelecimentos[0])
+          }
+          this.estabelecimentos = result.data.estabelecimentos
+          this.isLoading = false
+        }) // TODO: CATCH
     },
     selecionaEstabelecimento (estabelecimento) {
       this.$store.dispatch('setCurrentEstabelecimento', {...estabelecimento}) // TODO: Implementar ação?
@@ -44,7 +48,7 @@ export default {
     <div v-if="!isCurrentEstabelecimentoVazio">
       <estatisticas></estatisticas>
     </div>
-    <div class="empty-msg" v-else-if="estabelecimentos.length === 0">
+    <div class="empty-msg" v-else-if="(estabelecimentos.length === 0) && !isLoading">
       <q-alert type="warning" message="Você não cadastrou estabelecimento"></q-alert>
     </div>
     <div v-else-if="estabelecimentos.length > 1">
@@ -62,6 +66,9 @@ export default {
         </q-card-actions>
       </q-card>
     </div>
+    <q-inner-loading :visible="isLoading">
+      <q-spinner-gears size="50px" color="primary"></q-spinner-gears>
+    </q-inner-loading>
   </q-page>
 </template>
 

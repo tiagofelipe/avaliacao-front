@@ -7,6 +7,11 @@ export default {
       .then(result => Promise.resolve(result))
       .catch(error => Promise.reject(error))
   },
+  getEstabelecimentosByUser (id) {
+    return http.get(config.baseUrl + '/api/estabelecimento/usuario/' + id)
+      .then(result => Promise.resolve(result))
+      .catch(error => Promise.reject(error))
+  },
   hasEstabelecimento () {
     return !!localStorage.estabelecimento
   }
