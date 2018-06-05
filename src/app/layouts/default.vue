@@ -84,6 +84,7 @@ export default {
   @import '~variables';
   .menu-header
     background-color: $secondary;
+    background-image: url('../../assets/bg-menu.png')
     height: 150px;
     display: flex;
     align-items: center;
