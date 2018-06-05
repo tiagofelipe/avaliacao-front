@@ -63,6 +63,10 @@ export default {
             <q-item-side icon="add" ></q-item-side>
             <q-item-main label="Cadastrar" ></q-item-main>
           </q-item>
+          <q-item link :to="{ name: 'funcionario.lista' }">
+            <q-item-side icon="list" ></q-item-side>
+            <q-item-main label="Ver todos" ></q-item-main>
+          </q-item>
         </q-collapsible>
         <q-item-separator></q-item-separator>
         <q-item link to="/logout" v-if="isLogged">

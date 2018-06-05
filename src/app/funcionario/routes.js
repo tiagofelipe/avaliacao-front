@@ -8,6 +8,11 @@ export default [
         path: 'cadastro',
         name: 'funcionario.cadastro',
         component: () => import('src/app/funcionario/CadastroFuncionario')
+      },
+      {
+        path: 'listar',
+        name: 'funcionario.lista',
+        component: () => import('src/app/funcionario/ListaFuncionarios')
       }
     ]
   },
