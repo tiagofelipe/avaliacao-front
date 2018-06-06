@@ -28,6 +28,29 @@ export default {
             this.isLoading = false
           }
         })
+    },
+    deleteFuncionario (id, index) {
+      this.$q.dialog({
+        title: 'Atenção',
+        message: 'O funcionário será excluído do sistema. Tem certeza?',
+        ok: 'SIM',
+        cancel: 'NÃO'
+      }).then(() => {
+        FuncionarioService.deleteFuncionario(id)
+          .then(result => {
+            this.funcionarios.splice(index, 1)
+            this.$q.notify({
+              message: 'Funcionário excluído!',
+              type: 'positive'
+            })
+          })
+          .catch(error => {
+            this.$q.notify('Houve um problema ao excluir o funcionário.')
+            console.log(error.response.data)
+          })
+      }).catch(() => {
+        return false
+      })
     }
   }
 }
@@ -35,9 +58,9 @@ export default {
 
 <template>
   <q-page padding>
-    <span v-if="errorMsg">{{ errorMsg }}</span>
-    <div v-else>
-      <q-card inline class="card q-ma-sm" v-for="f in funcionarios" :key="f.id">
+    <span v-if="(funcionarios.length === 0) && !isLoading">Não há funcionários cadastrados</span>
+    <div v-else-if="funcionarios.length > 0">
+      <q-card inline class="card q-ma-sm" v-for="(f, index) in funcionarios" :key="f.id">
         <q-card-media>
           <img src="~assets/bg-menu.png" class="picture" height="150">
         </q-card-media>
@@ -52,7 +75,7 @@ export default {
         <q-card-separator ></q-card-separator>
         <q-card-actions align="around">
           <q-btn flat color="positive">Editar</q-btn>
-          <q-btn flat color="negative">Excluir</q-btn>
+          <q-btn flat color="negative" @click="deleteFuncionario(f.id, index)">Excluir</q-btn>
         </q-card-actions>
       </q-card>
     </div>

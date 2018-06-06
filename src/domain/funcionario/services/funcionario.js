@@ -16,5 +16,10 @@ export default {
     return http.get(config.baseUrl + '/api/public/funcionario/estabelecimento/' + id)
       .then(result => Promise.resolve(result))
       .catch(error => Promise.reject(error))
+  },
+  deleteFuncionario (id) {
+    return http.delete(config.baseUrl + '/api/funcionario/' + id)
+      .then(result => Promise.resolve(result))
+      .catch(error => Promise.reject(error))
   }
 }
