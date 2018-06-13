@@ -13,6 +13,23 @@ export default {
   mounted () {
     this.getFuncionarios()
   },
+  filters: {
+    formatarNota (value) { // TODO: OTIMIZAR ISSO
+      if (typeof value === 'undefined') {
+        return
+      }
+
+      if (value < 1) {
+        return '(sem avaliações)'
+      }
+      value = value.toString()
+
+      if (/^\d{1,}$/.test(value)) {
+        return value + ',0'
+      }
+      return value.replace(/\./, ',')
+    }
+  },
   methods: {
     getFuncionarios () {
       this.isLoading = true
@@ -66,7 +83,11 @@ export default {
         </q-card-media>
         <q-card-title class="relative-position">
           <div class="ellipsis"><small>{{ f.nome }}</small></div>
-          <q-rating slot="subtitle" v-model="f.nota" :max="5" readonly></q-rating>
+          <span class="small-text text-faded" v-if="f.nota < 1">(sem avaliações)</span>
+          <div v-else>
+            <q-rating slot="subtitle" v-model="f.nota" :max="5" readonly></q-rating>
+            <span class="text-faded">{{ f.nota | formatarNota }}</span>
+          </div>
         </q-card-title>
         <q-card-main>
           <p>{{ f.cargo }}</p>
@@ -90,5 +111,8 @@ export default {
   }
   .card {
     width: 200px;
+  }
+  .small-text {
+    font-size: 1rem;
   }
 </style>
