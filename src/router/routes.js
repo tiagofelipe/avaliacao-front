@@ -25,7 +25,4 @@ const root = [
   }
 ]
 
-console.log(app)
-console.log('Bola')
-
 export default [ ...root, ...app ]
