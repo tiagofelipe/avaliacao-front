@@ -1,4 +1,3 @@
-import { routes as app } from '../app'
 import auth from '../domain/auth/services/auth'
 
 const root = [
@@ -25,7 +24,4 @@ const root = [
   }
 ]
 
-console.log(app)
-console.log('Bola')
-
-export default [ ...root, ...app ]
+export default [ ...root ]

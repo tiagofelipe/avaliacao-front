@@ -3,6 +3,9 @@
 module.exports = function (ctx) {
   return {
     // app plugins (/src/plugins)
+    sourceFiles: {
+      rootComponent: 'src/Root.vue'
+    },
     plugins: [
       'i18n',
       'axios'
