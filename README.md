@@ -1,3 +1,3 @@
-# Quasar App
+# Software Avaliação Dashboard
 
 > WIP
