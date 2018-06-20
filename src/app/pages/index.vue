@@ -63,14 +63,14 @@ export default {
             <div class="col-xs-12 col-md-3">
               <div class="collapse" id="accountSearch">
                 <div class="bm-ittybitty bm-ittybitty-left-icon">
-                  <input placeholder="Buscar" ng-model="vm.filters.byText" ng-model-options="{debounce: 250}" type="text" class="form-control bm-form-control input_m ng-pristine ng-untouched ng-valid ng-empty" aria-invalid="false">
+                  <input placeholder="Buscar" type="text" class="form-control bm-form-control input_m">
                   <span class="ittybitty-icon">
                     <i class="fa fa-search"></i>
                   </span>
                 </div>
               </div>
               <div class="bm-ittybitty bm-ittybitty-left-icon hidden-xs">
-                <input placeholder="Buscar" ng-model="vm.filters.byText" ng-model-options="{debounce: 250}" type="text" class="form-control bm-form-control input_m ng-pristine ng-untouched ng-valid ng-empty" aria-invalid="false">
+                <input placeholder="Buscar" type="text" class="form-control bm-form-control input_m">
                 <span class="ittybitty-icon">
                   <i class="fa fa-search"></i>
                 </span>
@@ -79,7 +79,7 @@ export default {
             <div class="col-xs-3">
               <b>Status:</b>
               <div class="btn-group">
-                <select class="bm-dropdown-select-simple ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="vm.filters.selectedFilter" ng-init="vm.filters.selectedFilter = vm.filterOptions[0]" ng-options="filter as filter.name for filter in vm.filterOptions" aria-label="Estado da conta" ng-model-options="{trackBy: '$value.val'}" aria-invalid="false">
+                <select class="bm-dropdown-select-simple" >
                   <option label="Todas" value="object:13" selected="selected">Todas</option>
                   <option label="Ativas" value="object:14">Ativas</option>
                   <option label="Pausadas" value="object:15">Pausadas</option>
@@ -90,7 +90,7 @@ export default {
             <div class="col-xs-5 col-sm-6 col-md-3">
               <b>Expira em:</b>
               <div class="btn-group">
-                <select class="bm-dropdown-select-simple ng-pristine ng-untouched ng-valid ng-not-empty" ng-model="vm.dateFilter" ng-options="filters for filters in vm.filterPaymentState" aria-invalid="false">
+                <select class="bm-dropdown-select-simple">
                   <option label="Qualquer Data" value="string:Qualquer Data" selected="selected">Qualquer Data</option>
                   <option label="Hoje" value="string:Hoje">Hoje</option>
                   <option label="Amanhã" value="string:Amanhã">Amanhã</option>
@@ -103,16 +103,16 @@ export default {
               </div>
             </div>
             <div class="col-xs-4 col-sm-3">
-              <button ui-sref="wizard" class="bm-button bm-button-default bm-button-small pull-right" href="/a/wizard">Adicionar Conta</button>
+              <q-btn color="primary" type="submit" class="full-width no-shadow">Adicionar Estabelecimento</q-btn>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="lista-contas">
-          <div class="conta ng-scope panel-active" v-for="e in estabelecimentos" :key="e.id">
+          <div class="conta panel-active" v-for="e in estabelecimentos" :key="e.id">
             <div class="conta-head">
-              <span class="conta-name ng-binding"><!--i class="fa fa-instagram"></i--> {{ e.nomeFantasia }}</span>
+              <span class="conta-name"><!--i class="fa fa-instagram"></i--> {{ e.nomeFantasia }}</span>
             </div>
             <div class="heading-conta">
               <img profile-img="solutionplaceblindagem" class="img-circle profile-pic" src="https://api.bume.io/api/accounts/solutionplaceblindagem/picture">
