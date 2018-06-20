@@ -42,12 +42,8 @@ export default {
 <template>
   <form @submit.prevent="doLogin()">
     <div class="error-msg">{{ error }}</div>
-    <q-field icon="ion-person" class="q-my-md">
-      <q-input type="text" float-label="Login" ref="username" v-model="user.username"></q-input>
-    </q-field>
-    <q-field icon="lock" class="q-my-md">
-      <q-input type="password" float-label="Senha" v-model="user.password" ></q-input>
-    </q-field>
+    <input placeholder="Login" type="text" class="form-control bm-form-control input_m q-my-md" ref="username" v-model="user.username" />
+    <input placeholder="Senha" type="text" class="form-control bm-form-control input_m q-my-md" v-model="user.password" />
     <q-btn color="primary" type="submit" class="full-width">Entrar</q-btn>
   </form>
 </template>
