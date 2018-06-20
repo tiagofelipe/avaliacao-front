@@ -17,12 +17,12 @@ export default {
 </script>
 
 <template>
-  <q-page class="layout-padding login-page">
+  <div class="layout-padding login-page full-height">
     <div class="login">
       <span class="auth-title">Login</span>
       <login></login>
     </div>
-  </q-page>
+  </div>
 </template>
 
 <style scoped>
@@ -39,9 +39,9 @@ export default {
     background-size: cover;
   }
   .login {
-    width: 450px;
+    width: 500px;
     background-color: #fff;
-    padding: 20px;
+    padding: 50px;
   }
   .auth-title {
     font-size: 2rem;
