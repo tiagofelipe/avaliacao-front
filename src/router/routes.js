@@ -6,7 +6,7 @@ const root = [
     path: '/',
     component: () => import('src/app/layouts/default'),
     children: [
-      { path: '', name: 'index', component: () => import('src/app/pages/index') }
+      { path: '', name: 'index', component: () => import('src/app/dashboard/index') }
     ]
   },
   {
@@ -21,7 +21,7 @@ const root = [
 
   { // Always leave this as last one
     path: '*',
-    component: () => import('src/app/pages/404')
+    component: () => import('src/app/dashboard/404')
   }
 ]
 
