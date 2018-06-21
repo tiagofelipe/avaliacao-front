@@ -43,7 +43,7 @@ export default {
   <form @submit.prevent="doLogin()">
     <div class="error-msg">{{ error }}</div>
     <input placeholder="Login" type="text" class="form-control bm-form-control input_m q-my-md" ref="username" v-model="user.username" />
-    <input placeholder="Senha" type="text" class="form-control bm-form-control input_m q-my-md" v-model="user.password" />
+    <input placeholder="Senha" type="password" class="form-control bm-form-control input_m q-my-md" v-model="user.password" />
     <q-btn color="primary" type="submit" class="full-width">Entrar</q-btn>
   </form>
 </template>
