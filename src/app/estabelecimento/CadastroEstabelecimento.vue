@@ -31,23 +31,15 @@ export default {
 </script>
 
 <template>
-  <q-page padding>
+  <div>
     <form @submit.prevent="cadastraEstabelecimento">
-      <q-field icon="" class="q-my-md">
-        <q-input type="text" float-label="CNPJ" ref="cnpj" v-model="estabelecimento.cnpj" ></q-input>
-      </q-field>
-      <q-field icon="" class="q-my-md">
-        <q-input type="text" float-label="Nome Fantasia" v-model="estabelecimento.nomeFantasia" ></q-input>
-      </q-field>
-      <q-field icon="" class="q-my-md">
-        <q-input type="text" float-label="Razão Social" v-model="estabelecimento.razaoSocial" ></q-input>
-      </q-field>
-      <q-field icon="" class="q-my-md">
-        <q-input type="text" float-label="Tipo" v-model="estabelecimento.tipo" ></q-input>
-      </q-field>
+      <input placeholder="CNPJ" type="text" class="form-control bm-form-control input_m q-my-md" ref="cnpj" v-model="estabelecimento.cnpj" />
+      <input placeholder="Nome Fantasia" type="text" class="form-control bm-form-control input_m q-my-md" v-model="estabelecimento.nomeFantasia" />
+      <input placeholder="Razão Social" type="text" class="form-control bm-form-control input_m q-my-md" v-model="estabelecimento.razaoSocial" />
+      <input placeholder="Tipo" type="text" class="form-control bm-form-control input_m q-my-md" v-model="estabelecimento.tipo" />
       <q-btn color="primary" type="submit" class="full-width">Cadastrar</q-btn>
     </form>
-  </q-page>
+  </div>
 </template>
 
 <style scoped>
