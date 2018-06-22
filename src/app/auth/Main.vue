@@ -33,11 +33,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("assets/bg.png");
-    background-repeat: no-repeat;
-    background-position: center;
+    background: black url("assets/bg.png") no-repeat center;
     background-size: cover;
-    background-color: black;
     position: fixed;
     top: 0;
     right: 0;
@@ -51,6 +48,5 @@ export default {
   }
   .auth-title {
     font-size: 2rem;
-    font-weight: lighter;
   }
 </style>
