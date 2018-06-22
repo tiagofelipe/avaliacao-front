@@ -1,12 +1,13 @@
 <script>
 import { mapGetters } from 'vuex'
-import { isObjEmpty } from '../../utils/helpers/utils'
 import Estatisticas from './components/Estatisticas'
 import EstabelecimentoService from '../../domain/estabelecimento/services/estabelecimento'
+import EstabelecimentoStoreCheck from '../_mixins/EstabelecimentoStoreCheck'
 
 export default {
   name: 'PageIndex',
   components: { Estatisticas },
+  mixins: [ EstabelecimentoStoreCheck ],
   data () {
     return {
       estabelecimentos: [],
@@ -14,10 +15,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['currentEstabelecimento', 'currentUser']),
-    isCurrentEstabelecimentoVazio () {
-      return isObjEmpty(this.currentEstabelecimento)
-    }
+    ...mapGetters(['currentEstabelecimento', 'currentUser'])
   },
   created () {
     this.getEstabelecimentos()

@@ -1,10 +1,11 @@
 <script>
 import { openURL } from 'quasar'
 import { mapGetters } from 'vuex'
-import { isObjEmpty } from '../../utils/helpers/utils'
+import EstabelecimentoStoreCheck from '../_mixins/EstabelecimentoStoreCheck'
 
 export default {
   name: 'LayoutDefault',
+  mixins: [ EstabelecimentoStoreCheck ],
   data () {
     return {
       leftDrawerOpen: this.$q.platform.is.desktop,
@@ -16,9 +17,6 @@ export default {
     userName () {
       let n = this.currentUser.nome.trim().split(' ')
       return n.length > 1 ? n[0] + ' ' + n[n.length - 1] : n[0]
-    },
-    isCurrentEstabelecimentoVazio () {
-      return isObjEmpty(this.currentEstabelecimento)
     }
   },
   methods: {
