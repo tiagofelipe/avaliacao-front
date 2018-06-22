@@ -44,14 +44,12 @@ export default {
       <div class="menu-bar" v-if="!isCurrentEstabelecimentoVazio">
         <div class="dashboard-menu">
           <div class="tabs" id="tabs" md-autoselect="">
-            <div class="tab active" ui-sref-active="active" ui-sref="account.dashboard" href="/a/solutionplaceblindagem/dashboard">Dashboard</div>
-            <div class="tab" ui-sref-active="{'active': 'account.schedule.*'}" ui-sref="account.schedule.list" ng-hide="vm.account.isExpired==true" aria-hidden="false" href="/a/solutionplaceblindagem/schedule">Agendar Publicação <span class="bm-badge bm-badge-default">Beta</span>
-            </div>
-            <div class="tab" href="/a/solutionplaceblindagem/profiles">Público-alvo</div>
-            <div class="tab" href="/a/solutionplaceblindagem/dm">Mensagens diretas</div>
-            <div class="tab" href="/a/solutionplaceblindagem/settings">Configurações</div>
-            <div class="tab" href="/a/solutionplaceblindagem/safelist">Listas seguras</div>
-            <div class="tab" href="/a/solutionplaceblindagem/plan">Assinatura</div>
+            <div class="tab active">Dashboard</div>
+            <div class="tab">Avaliações</div>
+            <div class="tab">Funcionários</div>
+            <div class="tab">Critérios de Avaliação</div>
+            <div class="tab">Perfil</div>
+            <div class="tab">Configurações</div>
           </div>
         </div>
       </div>
