@@ -1,17 +1,14 @@
 <script>
 import { openURL } from 'quasar'
 import { mapGetters } from 'vuex'
+import DefaultMenu from './components/DefaultMenu'
+import DashboardMenu from './components/DashboardMenu'
 import EstabelecimentoStoreCheck from '../_mixins/EstabelecimentoStoreCheck'
 
 export default {
   name: 'LayoutDefault',
   mixins: [ EstabelecimentoStoreCheck ],
-  data () {
-    return {
-      leftDrawerOpen: this.$q.platform.is.desktop,
-      opened: false
-    }
-  },
+  components: { DefaultMenu, DashboardMenu },
   computed: {
     ...mapGetters(['isLogged', 'currentUser', 'currentEstabelecimento']),
     userName () {
@@ -28,29 +25,8 @@ export default {
 <template>
   <div>
     <header>
-      <div class="container-logo">
-        <div class="header-tools">
-          <div class="dropdown" :class="{ open: opened }">
-            <button class="bume-btn link btn-user-menu dropdown-toggle" @click="opened = !opened">{{ currentUser.email }}</button>
-            <ul class="bm-dropdown-menu">
-              <li class="bm-dropdown-item">Perfil</li>
-                <router-link to="/logout" tag="li" class="bm-dropdown-item">Sair</router-link>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="menu-bar" v-if="!isCurrentEstabelecimentoVazio">
-        <div class="dashboard-menu">
-          <div class="tabs" id="tabs" md-autoselect="">
-            <div class="tab active">Dashboard</div>
-            <div class="tab">Avaliações</div>
-            <div class="tab">Funcionários</div>
-            <div class="tab">Critérios de Avaliação</div>
-            <div class="tab">Perfil</div>
-            <div class="tab">Configurações</div>
-          </div>
-        </div>
-      </div>
+      <default-menu></default-menu>
+      <dashboard-menu v-if="!isCurrentEstabelecimentoVazio"></dashboard-menu>
     </header>
     <div class="container fill">
       <div class="row fill">

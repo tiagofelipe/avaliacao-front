@@ -19,6 +19,6 @@ export default [
 
   { // Always leave this as last one
     path: '*',
-    component: () => import('src/app/dashboard/404')
+    component: () => import('src/app/main/404')
   }
 ]
