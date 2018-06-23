@@ -7,18 +7,20 @@ export default {
 <template>
   <div class="menu-bar">
     <div class="dashboard-menu">
-      <div class="tabs" id="tabs" md-autoselect="">
-        <div class="tab active">Dashboard</div>
-        <div class="tab">Avaliações</div>
-        <div class="tab">Funcionários</div>
-        <div class="tab">Critérios de Avaliação</div>
-        <div class="tab">Perfil</div>
-        <div class="tab">Configurações</div>
-      </div>
+      <ul class="tabs" id="tabs">
+        <router-link :to="{ name: 'dashboard.main' }" tag="li" class="tab">Dashboard</router-link>
+        <router-link to="/temp" class="tab">Avaliações</router-link>
+        <router-link :to="{ name: 'funcionario.lista' }" tag="li" class="tab">Funcionários</router-link>
+        <router-link to="/temp" class="tab">Critérios de Avaliação</router-link>
+        <router-link to="/temp" class="tab">Perfil</router-link>
+        <router-link to="/temp" class="tab">Configurações</router-link>
+      </ul>
     </div>
   </div>
 </template>
 
 <style scoped>
-
+li {
+  cursor: pointer;
+}
 </style>
