@@ -74,7 +74,7 @@ export default {
 </script>
 
 <template>
-  <q-page padding>
+  <div>
     <span v-if="(funcionarios.length === 0) && !isLoading">Não há funcionários cadastrados</span>
     <div v-else-if="funcionarios.length > 0">
       <q-card inline class="card q-ma-sm" v-for="(f, index) in funcionarios" :key="f.id">
@@ -103,7 +103,7 @@ export default {
     <q-inner-loading :visible="isLoading">
       <q-spinner-gears size="50px" color="primary"></q-spinner-gears>
     </q-inner-loading>
-  </q-page>
+  </div>
 </template>
 
 <style scoped>

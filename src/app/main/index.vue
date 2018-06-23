@@ -61,9 +61,9 @@ export default {
                 </span>
             </div>
           </div>
-          <div class="col-xs-4 col-sm-3">
-            <q-btn color="primary" type="submit" class="full-width no-shadow">Adicionar Estabelecimento</q-btn>
-          </div>
+          <router-link :to="{ name: 'estabelecimento.cadastro' }">
+            <button class="bm-button bm-button-default bm-button-small pull-right">Adicionar Estabelecimento</button>
+          </router-link>
         </div>
       </div>
     </div>
