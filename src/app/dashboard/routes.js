@@ -7,7 +7,7 @@ export default [
       {
         path: '/',
         name: 'dashboard.main',
-        component: () => import('src/app/dashboard/components/Estatisticas')
+        component: () => import('src/app/dashboard/Main')
       }
     ]
   },
