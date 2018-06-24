@@ -7,7 +7,16 @@ export default {
       type: String
     },
     value: {
-      required: true
+      required: true,
+      type: Number
+    }
+  },
+  filters: {
+    formatar (val = 0) {
+      if (val < 1000) {
+        return val
+      }
+      return val.toString().split('').reverse().join('').replace(/(\d{3})/g, '$1.').split('').reverse().join('').replace(/^\./, '')
     }
   }
 }
@@ -16,7 +25,7 @@ export default {
 <template>
   <div class="main">
     <div class="info-box">
-      <span class="value">{{ value }}</span>
+      <span class="value">{{ value | formatar }}</span>
       <span class="info">{{ info }}</span>
     </div>
   </div>
