@@ -16,7 +16,7 @@ export default {
       if (val < 1000) {
         return val
       }
-      let inverter = v => v.split('').reverse().join('')
+      const inverter = v => v.split('').reverse().join('')
 
       val = inverter(val.toString()).replace(/(\d{3})/g, '$1.')
 
