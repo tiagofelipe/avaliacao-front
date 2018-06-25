@@ -16,7 +16,11 @@ export default {
       if (val < 1000) {
         return val
       }
-      return val.toString().split('').reverse().join('').replace(/(\d{3})/g, '$1.').split('').reverse().join('').replace(/^\./, '')
+      let inverter = v => v.split('').reverse().join('')
+
+      val = inverter(val.toString()).replace(/(\d{3})/g, '$1.')
+
+      return inverter(val).replace(/^\./, '')
     }
   }
 }
