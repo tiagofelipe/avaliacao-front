@@ -21,7 +21,7 @@ export default {
 <template>
     <div class="conta panel-active">
       <div class="conta-head">
-        <span class="conta-name"><!--i class="fa fa-instagram"></i--> {{ estabelecimento.nomeFantasia }}</span>
+        <span class="conta-name"><i class="fa fa-instagram"></i> {{ estabelecimento.nomeFantasia }}</span>
       </div>
       <div class="heading-conta">
         <img class="img-circle profile-pic" src="https://api.bume.io/api/accounts/solutionplaceblindagem/picture">
