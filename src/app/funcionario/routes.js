@@ -1,8 +1,8 @@
 export default [
   {
-    path: '/funcionario',
+    path: '/funcionarios',
     component: () => import('src/app/layouts/default'),
-    // redirect: { name: 'funcionario.cadastro' },
+    redirect: { name: 'funcionario.lista' },
     children: [
       {
         path: 'cadastro',
@@ -10,7 +10,7 @@ export default [
         component: () => import('src/app/funcionario/CadastroFuncionario')
       },
       {
-        path: 'listar',
+        path: '/',
         name: 'funcionario.lista',
         component: () => import('src/app/funcionario/ListaFuncionarios')
       }
