@@ -1,8 +1,10 @@
 <script>
 import FuncionarioService from '../../domain/funcionario/services/funcionario'
+import FuncionarioItem from './components/FuncionarioItem'
 
 export default {
   name: 'ListaFuncionarios',
+  components: { FuncionarioItem },
   data () {
     return {
       funcionarios: [],
@@ -13,23 +15,6 @@ export default {
   mounted () {
     this.getFuncionarios()
   },
-  filters: {
-    formatarNota (value) { // TODO: OTIMIZAR ISSO
-      if (typeof value === 'undefined') {
-        return
-      }
-
-      if (value < 1) {
-        return '(sem avaliações)'
-      }
-      value = value.toString()
-
-      if (/^\d{1,}$/.test(value)) {
-        return value + ',0'
-      }
-      return value.replace(/\./, ',')
-    }
-  },
   methods: {
     getFuncionarios () {
       this.isLoading = true
@@ -37,6 +22,7 @@ export default {
         .then(result => {
           console.log(result.data)
           this.funcionarios = result.data
+          this.funcionarios[0].nota = 4
           this.isLoading = false
         })
         .catch(error => {
@@ -46,59 +32,20 @@ export default {
           }
         })
     },
-    deleteFuncionario (id, index) {
-      this.$q.dialog({
-        title: 'Atenção',
-        message: 'O funcionário será excluído do sistema. Tem certeza?',
-        ok: 'SIM',
-        cancel: 'NÃO'
-      }).then(() => {
-        FuncionarioService.deleteFuncionario(id)
-          .then(result => {
-            this.funcionarios.splice(index, 1)
-            this.$q.notify({
-              message: 'Funcionário excluído!',
-              type: 'positive'
-            })
-          })
-          .catch(error => {
-            this.$q.notify('Houve um problema ao excluir o funcionário.')
-            console.log(error.response.data)
-          })
-      }).catch(() => {
-        return false
-      })
+    deleteFuncionario (index) {
+      this.funcionarios.splice(index, 1)
     }
   }
 }
 </script>
 
 <template>
-  <div>
+  <div class="row">
     <span v-if="(funcionarios.length === 0) && !isLoading">Não há funcionários cadastrados</span>
-    <div v-else-if="funcionarios.length > 0">
-      <q-card inline class="card q-ma-sm" v-for="(f, index) in funcionarios" :key="f.id">
-        <q-card-media>
-          <img src="~assets/bg-menu.png" class="picture" height="150">
-        </q-card-media>
-        <q-card-title class="relative-position">
-          <div class="ellipsis"><small>{{ f.nome }}</small></div>
-          <span class="small-text text-faded" v-if="f.nota < 1">(sem avaliações)</span>
-          <div v-else>
-            <q-rating slot="subtitle" v-model="f.nota" :max="5" readonly></q-rating>
-            <span class="text-faded">{{ f.nota | formatarNota }}</span>
-          </div>
-        </q-card-title>
-        <q-card-main>
-          <p>{{ f.cargo }}</p>
-          <!--p class="text-faded">Description</p-->
-        </q-card-main>
-        <q-card-separator ></q-card-separator>
-        <q-card-actions align="around">
-          <q-btn flat color="positive">Editar</q-btn>
-          <q-btn flat color="negative" @click="deleteFuncionario(f.id, index)">Excluir</q-btn>
-        </q-card-actions>
-      </q-card>
+    <div class="account-list-container" v-else-if="funcionarios.length > 0">
+      <div class="lista-contas">
+        <funcionario-item v-for="(f, index) in funcionarios" :key="f.id" :funcionario="f" @deleteFuncionario="deleteFuncionario(index)"></funcionario-item>
+      </div>
     </div>
     <q-inner-loading :visible="isLoading">
       <q-spinner-gears size="50px" color="primary"></q-spinner-gears>
