@@ -24,6 +24,7 @@ export default {
     delete localStorage.token
     delete localStorage.user
     delete localStorage.estabelecimento
+    delete http.defaults.headers.common['Authorization']
     this.onChange(false)
     // Clear store in vuex
     store.dispatch('logout').then(() => {
