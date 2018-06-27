@@ -26,7 +26,7 @@ export default {
   <div>
     <header>
       <router-link to="/" tag="button" class="back-btn pull-left" v-if="!isCurrentEstabelecimentoVazio">
-        <i class="fa fa-arrow-left fa-3x"></i>
+        <i class="fa fa-arrow-left fa-3x"></i><br><small>Página inícial</small>
       </router-link>
       <default-menu></default-menu>
       <dashboard-menu v-if="!isCurrentEstabelecimentoVazio"></dashboard-menu>
@@ -43,7 +43,7 @@ export default {
 
 <style scoped>
   .back-btn {
-    margin: 15px;
+    margin: 15px 5px;
     border: none;
     background: none;
   }
