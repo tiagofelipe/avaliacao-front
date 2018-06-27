@@ -22,7 +22,6 @@ export default {
         .then(result => {
           console.log(result.data)
           this.funcionarios = result.data
-          this.funcionarios[0].nota = 4
           this.isLoading = false
         })
         .catch(error => {
@@ -43,6 +42,36 @@ export default {
   <div class="row">
     <span v-if="(funcionarios.length === 0) && !isLoading">Não há funcionários cadastrados</span>
     <div class="account-list-container" v-else-if="funcionarios.length > 0">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Funcionários Cadastrados</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 opt-bar">
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <div class="collapse" id="accountSearch">
+                <div class="bm-ittybitty bm-ittybitty-left-icon">
+                  <input placeholder="Buscar" type="text" class="form-control bm-form-control input_m">
+                  <span class="ittybitty-icon">
+                    <i class="fa fa-search"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="bm-ittybitty bm-ittybitty-left-icon hidden-xs">
+                <input placeholder="Buscar funcionário..." type="text" class="form-control bm-form-control input_m">
+                <span class="ittybitty-icon">
+                  <i class="fa fa-search"></i>
+                </span>
+              </div>
+            </div>
+            <router-link :to="{ name: 'funcionario.cadastro' }">
+              <button class="bm-button bm-button-default bm-button-small pull-right">Cadastrar Funcionário</button>
+            </router-link>
+          </div>
+        </div>
+      </div>
       <div class="lista-contas">
         <funcionario-item v-for="(f, index) in funcionarios" :key="f.id" :funcionario="f" @deleteFuncionario="deleteFuncionario(index)"></funcionario-item>
       </div>

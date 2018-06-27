@@ -21,6 +21,9 @@ export default {
   created () {
     this.funcionario.estabelecimento = this.currentEstabelecimento.id
   },
+  mounted () {
+    this.$refs.nome.focus()
+  },
   methods: {
     cadastraFuncionario () {
       this.isRegistering = true
@@ -70,21 +73,15 @@ export default {
 </script>
 
 <template>
-  <q-page padding>
+  <div>
     <h4>Cadastro de Funcionário</h4>
     <form @submit.prevent="cadastraFuncionario">
-      <q-field icon="" class="q-my-md">
-        <q-input type="text" float-label="Nome" v-model="funcionario.nome" ></q-input>
-      </q-field>
-      <q-field icon="" class="q-my-md">
-        <q-input type="text" float-label="Cargo" v-model="funcionario.cargo" ></q-input>
-      </q-field>
-      <q-field icon="" label="Foto" label-width="1" class="q-my-md">
-        <input type="file" id="fileInpt" ref="uploadFile" accept="image/*" @change="setFile($event)">
-      </q-field>
+      <input placeholder="Nome" type="text" class="form-control bm-form-control input_m q-my-md" ref="nome" v-model="funcionario.nome" />
+      <input placeholder="Cargo" type="text" class="form-control bm-form-control input_m q-my-md" v-model="funcionario.cargo" />
+      <input type="file" id="fileInpt" ref="uploadFile" accept="image/*" @change="setFile($event)">
       <q-btn color="primary" type="submit" class="full-width">Cadastrar</q-btn>
     </form>
-  </q-page>
+  </div>
 </template>
 
 <style scoped>
