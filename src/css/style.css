@@ -3157,7 +3157,8 @@ md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-defaul
 
 .conta .heading-conta {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: center;
   justify-content: space-between
 }
 
