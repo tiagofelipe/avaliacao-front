@@ -7,9 +7,6 @@ export default {
       required: true
     }
   },
-  beforeMount () {
-    this.estabelecimento.nota = 4.2
-  },
   filters: {
     formatarNota (value) { // TODO: OTIMIZAR ISSO
       if (typeof value === 'undefined') {
